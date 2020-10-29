@@ -1,0 +1,997 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "base/normalize";
+@import "base/base-all";
+@import "grid";
+@import "containers";
+@import "buttons";
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bolder;
+}
+
+body {}
+
+body.open {
+  position: fixed;
+}
+
+main {
+  padding-top: 50px;
+}
+
+footer {
+  background-color: $primary;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+  &.for-tour-base{
+    @include max(lg){
+      margin-bottom: 4rem;
+    }
+    
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    padding: $spacer+$spacer-s $spacer-wrapper $spacer;
+    margin: 0 auto;
+  }
+
+  p {
+    display: inline-block;
+    padding-right: $spacer;
+    margin-bottom: $spacer-s;
+  }
+}
+
+//導覽
+.nav-bar-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: $spacer-wrapper;
+  padding-right: $spacer-wrapper;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+
+  .toggler {
+    display: none;
+    border: 0;
+    background: none;
+    font-size: $h2-font-size;
+    color: #fff;
+    cursor: pointer;
+
+    &:focus {
+      outline: 0;
+    }
+
+    @include max(xl) {
+      display: block;
+    }
+  }
+}
+
+.nav-bar {
+  background-color: $primary;
+  padding: $spacer-s 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 99;
+}
+
+.nav-bar__list {
+  @include max(xl) {
+    background-color: $gray-100;
+    @include transition;
+    position: fixed;
+    transform: translateX(120%);
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 100;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+
+    @include max(xl) {
+      flex-wrap: wrap;
+      height: 100%;
+      align-content: flex-start;
+      text-align: center;
+      padding-top: 3rem;
+    }
+
+    li {
+      @include max(xl) {
+        width: 100%;
+      }
+
+      a {
+        color: #fff;
+        padding: 0 $spacer-s;
+        display: block;
+        font-weight: bolder;
+
+        @include max(xl) {
+          color: $gray-800;
+          padding: $spacer-s;
+        }
+
+        &:hover {
+          color: #FFFF99;
+
+          @include max(xl) {
+            color: $primary;
+          }
+        }
+
+        &.icon-link {
+          display: inline-block;
+          padding: 0 0 0 $spacer-s;
+
+          @include max(xl) {
+            padding: $spacer-s;
+          }
+        }
+      }
+
+      &+li {
+        border-left: #fff 1px solid;
+
+        @include max(xl) {
+          border: 0;
+        }
+
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  .close {
+    display: none;
+    border: 0;
+    background: none;
+    font-size: $h2-font-size;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: $spacer;
+    top: $spacer;
+    color: $gray-800;
+
+    &:focus {
+      outline: 0;
+    }
+
+    @include max(xl) {
+      display: block;
+    }
+  }
+}
+
+.top-category {
+  background-color: $light-bg;
+  margin-bottom: $spacer-bottom;
+  @include border-bottom;
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    padding: $spacer $spacer-s;
+    min-width: 18rem;
+    @include border;
+    top: 38px;
+    left: 0;
+    background-color: #fff;
+
+  
+    @include max(xl) {
+   
+    }
+
+    a {
+      padding: 0 $spacer-s;
+
+      &+a {
+        margin-top: $spacer;
+      }
+    }
+  }
+
+  .dropdown-mobile {
+    position: static;
+    top: 90px;
+    border: 0;
+    padding: 0 $spacer-s;
+    flex-wrap: wrap;
+    min-width:0;
+  
+    &.show {
+      display: flex;
+    }
+
+    a {
+      display: block;
+      width: 50%;
+      text-align: center;
+      padding: $spacer $spacer-s;
+
+      &+a {
+        margin-top: 0;
+      }
+    }
+  }
+
+  ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+   
+    font-weight: bolder;
+
+    @include max(xl) {
+      justify-content: flex-start;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none
+      }
+    }
+
+    li {
+      position: relative;
+
+      @include max(xl) {
+        flex: none;
+      }
+
+      &:hover {
+        @include min(xl) {
+          .dropdown {
+            display: block;
+          }
+        }
+      }
+
+      a {
+        display: block;
+        padding: $spacer $spacer-s;
+
+        &.dropdown-btn-mobile {
+          display: none;
+        }
+
+        @include max(xl) {
+          &.dropdown-btn {
+            display: none;
+          }
+
+          &.dropdown-btn-mobile {
+            display: block;
+          }
+        }
+
+        i {
+          padding-left: 0.2rem;
+        }
+      }
+
+      &+li {
+    
+      }
+    }
+  }
+}
+
+.top {
+  margin-bottom: $spacer-bottom;
+  background-image: url(../images/header-1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 400px;
+
+  @include max(md) {
+    background-image: url(../images/header-1-m.jpg);
+    height: 26vh;
+    background-size: cover;
+  }
+}
+
+//文字顏色
+.text-primary {
+  color: $primary;
+}
+
+.text-danger {
+  color: $danger;
+  font-weight: bolder;
+  font-size: $h5-font-size;
+}
+
+.text-light {
+  color: $light;
+}
+
+.text-warning {
+  color: $warning;
+}
+
+//文字大小
+.text-sm {
+  font-size: $font-size-base;
+}
+
+//大容器用container
+// .container-xl {
+//   max-width: $max-width-xl;
+//   margin: 0 auto;
+//   padding: 0 $spacer-wrapper;
+
+//   @include max(xl) {
+   
+//   }
+// }
+
+// .container-lg {
+//   @extend .container-xl;
+//   max-width: $max-width-lg;
+//   margin-bottom:$spacer-bottom;
+// }
+
+//section用 block
+.block-s {
+ 
+  justify-content: center;
+}
+
+.block-l {}
+
+//客製化grid
+.one-md-s {
+  @extend %one;
+
+  @include min(md) {
+    flex: 0 0 30%;
+    max-width: 400px;
+
+  }
+}
+
+.one-xl-l {
+  @extend %one;
+
+  @include min(xl) {
+    flex: 0 0 70%;
+    max-width: 70%;
+   
+  }
+}
+
+.one-lg-l {
+  @extend %one;
+
+  @include min(lg) {
+    flex: 0 0 65%;
+    max-width: 65%;
+  }
+}
+
+
+//swiper
+.swiper-container {
+  width: 100%;
+  max-width: 880px;
+  margin-bottom: $spacer-bottom;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-size: 40px 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  content: '';
+}
+
+.swiper-button-prev {
+  background-image: url(../images/swiper_prev.png);
+}
+
+.swiper-button-next {
+  background-image: url(../images/swiper_next.png);
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+  background: $secondary;
+}
+
+.head-bg {
+  background-color: $primary;
+  font-size: $h2-font-size;
+  color: #fff;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  min-height: 52px;
+
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  @include max(md) {
+    font-size: $h3-font-size;
+    min-height: 42px;
+  }
+
+  .icon {
+    display: block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+
+    @include max(md) {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+
+  .icon-no-bg {
+
+  
+    img {
+      width: 30px;
+
+      @include max(lg) {
+        min-width: 30px;
+      }
+    }
+
+    margin-right: $spacer-s;
+  }
+}
+
+.s-word {
+  font-size: $font-size-s;
+  font-weight: normal;
+}
+
+.side-menu {
+  padding: $spacer;
+
+  @include max(xl) {
+    display: flex;
+  }
+
+  @include max(md) {
+    display: block;
+  }
+
+  .qr {
+ 
+    display: block;
+    margin-left: 1.2rem;
+    padding-top: 0.5rem;
+
+    @include max(xl) {
+      display: none;
+    }
+
+    img {
+      max-width: 100px;
+    }
+  }
+
+  li {
+    padding-bottom: 0.8rem;
+
+    &+li {
+      @include max(xl) {
+        margin-left: 1rem;
+      }
+
+      @include max(md) {
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    i {
+      color: $secondary;
+      padding-right: 0.5rem;
+    }
+
+    a {}
+  }
+}
+
+//tab切換
+.tab-item {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+//tab樣式
+.tab {
+  font-size: $tab-font-size;
+  font-weight: bolder;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none
+  }
+
+  ul {
+    display: flex;
+
+    li {
+      font-size: $h5-font-size;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      @include border;
+   
+      background: $primary;
+
+      @include max(lg) {
+        flex: none;
+        border-radius: 0;
+        font-size: $h6-font-size;
+      }
+
+      &.sel {
+        background: $secondary;
+      }
+
+      a {
+        padding: $spacer $spacer*2;
+        color: #fff;
+        display: block;
+
+        @include max(lg) {
+          padding: $spacer-s
+        }
+      }
+
+      &+li {
+        margin-left: 0.2rem;
+      }
+    }
+  }
+}
+
+.tab-item-box {
+  h2 {
+    @include text-no;
+
+    @include max(md) {
+      max-width: 180px;
+    }
+  }
+}
+
+//box 單純只有框的樣式
+.box-s {
+  background-color: $gray-100;
+  @include border;
+  margin-bottom: $spacer-bottom;
+
+  @include max(xl) {
+    max-width: 880px !important;
+    margin-bottom: $spacer;
+  }
+}
+
+.box-s-tour {
+  background-color: $gray-100;
+  margin-bottom: $spacer-bottom;
+  @include border;
+
+  @include max(lg) {}
+}
+
+.box-m {
+
+  @include border;
+  margin-bottom: $spacer-bottom;
+}
+
+.box-l {
+  background-color: #E8F0FF;
+  padding: $spacer-box-s;
+  margin-bottom: $spacer-bottom;
+}
+
+//item 個別項目用item ，可以客製化
+.item-wrapper {
+
+}
+
+.item-l {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: $spacer-bottom;
+
+  @include max(md) {}
+
+  .one-md {
+
+  }
+}
+
+.item {
+  h3 {
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item-img {
+    margin-bottom: $spacer-s;
+  }
+}
+
+.item-img {
+  img {
+    height: 19vw;
+    max-height: 240px;
+
+    @include max(sm) {
+      height: auto;
+    }
+  }
+}
+
+.item-img-s {
+  align-items: flex-end;
+
+  img {
+    max-height: 160px;
+  }
+}
+
+.item-img-main {
+  img {
+    min-height: 260px;
+  }
+
+  @include max(md) {
+    padding-bottom: $spacer-s;
+  }
+}
+
+.item-price {
+  margin-bottom: $spacer-s;
+}
+
+.item-date {
+  margin-bottom: $spacer-s;
+
+  span {
+    color: $secondary;
+    font-weight: bolder;
+  }
+}
+
+.item-img-s {
+  justify-content: flex-start;
+
+  *+* {
+
+  }
+}
+
+.item {
+  text-align: center;
+
+  margin-bottom: $spacer-bottom;
+  @include border;
+  padding: $spacer-box-s;
+  background-color: #fff;
+
+  @include max(md) {
+
+  }
+}
+
+.list-block-wrapper {
+  padding: $spacer;
+
+  .list-block {
+    margin-bottom: $spacer;
+    padding-bottom: $spacer-s;
+    @include border-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .title {
+     
+      font-weight: bolder;
+    }
+
+    .list-block__btn-group {
+      padding-top: $spacer-s;
+
+      .btn-link {
+        margin-bottom: $spacer-s;
+      }
+    }
+  }
+}
+
+.tour-info {
+  display: flex;
+  justify-content: space-between;
+  padding: $spacer;
+
+  align-items: center;
+  padding: $spacer;
+
+  &.for-single {
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .side-block {
+      width: 50%;
+
+      @include max(lg) {
+        width: 100%;
+      }
+    }
+  }
+
+  @include max(lg) {
+    display: block;
+  }
+
+  .tour-info__share {
+    padding: $spacer-s 0;
+  }
+}
+
+.tour-info__list {
+
+
+  .list-item {
+    display: flex;
+    margin-bottom: $spacer-s;
+
+ 
+    .title {
+      min-width: 90px;
+   
+    }
+
+    .content {}
+  }
+}
+
+.travel-info {
+  margin-bottom: $spacer-bottom;
+}
+
+.travel-info__list {
+  text-align: center;
+  @include border;
+  border-bottom: 0;
+
+  @include max(lg) {
+    border: 0;
+    padding-top: $spacer-s;
+  }
+
+  .head {
+    padding: $spacer-s 0;
+    background-color: $light-bg;
+    @include border-bottom;
+
+    @include max(lg) {
+      display: none;
+    }
+  }
+
+  .list-row {
+    padding: $spacer-s 0;
+    @include border-bottom;
+    align-items: center;
+
+    @include max(lg) {
+      padding: $spacer-s;
+      @include border;
+      margin-bottom: $spacer-s;
+    }
+
+    .column {
+      @include max(lg) {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $spacer-s;
+   
+      }
+    }
+
+    .title {
+      display: none;
+
+      @include max(lg) {
+        display: block;
+      }
+    }
+
+    .content {
+      @include max(lg) {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.space-bw {
+  justify-content: space-between;
+
+  .left {}
+
+  .right {}
+}
+
+.price-info {
+  .price-info__item {
+    display: flex;
+
+    +.price-info__item {
+      margin-top: $spacer-s;
+    }
+
+    .title {
+      display: block;
+      min-width: 80px;
+    }
+
+    .content {}
+  }
+}
+
+.itinerary {
+  line-height: 1.5;
+}
+
+.itinerary__block {
+  p {
+    margin: $spacer 0;
+  }
+
+  .content {
+    padding: $spacer;
+
+    @include max(lg) {
+      padding: $spacer 0;
+    }
+
+    .top-info {}
+
+    .top-info__img {}
+
+    .top-info__content {
+      padding: $spacer;
+
+      @include max(lg) {
+        padding: $spacer 0 0;
+      }
+
+      h3 {
+        font-size: $h1-font-size;
+      }
+    }
+
+    .detail {}
+
+    .bottom-info {
+      .bottom-info__item {
+        background-color: $gray-100;
+        padding: $spacer;
+        margin-bottom: $spacer-s;
+        display: flex;
+        align-items: center;
+
+        @include max(lg) {
+          flex-wrap: wrap;
+        }
+
+        .bottom-info__item__head {
+          flex-basis: 133px;
+          flex-shrink: 0;
+
+          @include max(lg) {
+            max-width: 100px;
+          }
+        }
+
+        .bottom-info__item__content {
+          @include max(lg) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .features {
+    padding: $spacer 80px $spacer;
+
+    @include max(lg) {
+      padding: $spacer 0;
+    }
+  }
+
+  .other {
+
+
+    i {
+      color: $primary;
+      padding-right: 0.5rem;
+    }
+
+    .other__block {
+      margin-bottom: $spacer;
+    }
+
+    .btn-link {
+      display: block;
+
+      &+.btn-link {
+        margin-top: $spacer-s;
+      }
+    }
+  }
+}
+
