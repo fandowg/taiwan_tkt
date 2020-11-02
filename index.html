@@ -14,7 +14,7 @@
   <meta name="image" content="">
 
   <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
   <link rel="stylesheet" href="css/all.css" />
   <!-- <link rel="stylesheet" href="css/all.min.css" /> -->
 </head>
@@ -48,8 +48,8 @@
   </header>
   <div class="popup-overlay">
     <div class="popup">
-      <button type="button" class="close-btn"><i class="fas fa-times"></i></button>
-      <iframe src="cart.html" frameborder="0"></iframe>
+      <button type="button" class="close-btn popup-close-btn"><i class="fas fa-times"></i></button>
+      <iframe src="cart.html" id="cartframe" frameborder="0"></iframe>
 
     </div>
 
@@ -89,7 +89,7 @@
             全台連鎖
           </a></li>
       </ul>
-      <a class="cart" href=""><i class="fas fa-shopping-cart"></i>購物車</a>
+      <a class="cart-btn popup-btn" href=""><i class="fas fa-shopping-cart"></i>購物車</a>
       </div>
 
     </div>
@@ -241,24 +241,9 @@
     </div>
   </footer>
 </body>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <script src="https://www.ftstour.com.tw/b2c/taiwan/js/jquery.min.js"></script>
 <script src="js/taiwan.js"></script>
-<script>
-  //輪播圖
-  var Taiwanslider = new Swiper('.swiper-container', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  });
-</script>
+
 
 </html>

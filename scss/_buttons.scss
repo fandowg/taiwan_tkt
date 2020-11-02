@@ -210,3 +210,54 @@
     color: $info;
   }
 }
+
+.btn-under{
+  font-size: $btn-font-size;
+  padding:0.6rem;
+ width: calc(100% + #{$spacer-s*2});
+ border-radius: 0;
+ margin:0 (-$spacer-s) (-$spacer-s);
+}
+
+
+.tour-info__btn-block{
+  display: flex;
+  padding-bottom: $spacer;
+  justify-content: center;
+  @include max(lg){
+    position: fixed;
+    // width: 100%;
+    bottom: 0;
+    padding-bottom: 0;
+    background-color: #fff;
+    left: 0;
+    right: 0;
+  }
+  .btn{
+    @include max(lg){
+    border-radius: 0;
+    }
+    // padding:0.4rem 0;
+  }
+  .btn + .btn{
+    margin-left: $spacer-s;
+    @include max(lg){
+      margin-left: 0;
+    }
+  }
+  @include max(lg){
+    flex-wrap: wrap;
+    .btn-outline-info{
+      width: 100%;
+      border: 0;
+    }
+    .btn-primary{
+      width: 50%;
+      padding: 0.8rem 0;
+    }
+    .btn-secondary{
+      width: 50%;
+      padding: 0.8rem 0;
+    }
+  }
+}

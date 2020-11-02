@@ -997,6 +997,7 @@ footer {
 
 .top.for-taiwan-tkt{
 margin-bottom: 0;
+// height: 450px;
 }
 
 .top-menu{
@@ -1008,6 +1009,7 @@ margin-bottom: 0;
   color: $white;
   @include max(lg){
     font-size: $h5-font-size;
+    padding: $spacer-s 0;
   }
   .container-lg{
     display: flex;
@@ -1049,7 +1051,7 @@ margin-bottom: 0;
       display: none;
     }
   }
-  .cart{
+  .cart-btn{
     color: $white;
     i{
       padding-right: 0.2rem;
@@ -1059,10 +1061,10 @@ margin-bottom: 0;
 
 .tkt-content{
   background-color: #fafaf2;
-  padding: $spacer 0;
+  padding: $spacer*2 0 $spacer*2 0;
   .top-filter{
     text-align: center;
-    padding: $spacer 0;
+    padding-bottom: $spacer ;
     @include min(lg){
     display: flex;
     justify-content: space-between;
@@ -1182,10 +1184,13 @@ margin-bottom: 0;
     padding-right: $gutter;
     -webkit-overflow-scrolling: touch;
     position: fixed;
-    display: flex;
+  //  display: flex;
     z-index: 999999;
-    // overflow-y: scroll;
+      
     background-color: rgba(0, 0, 0, 0.4);
+    @include max(sm){
+      // overflow-y: scroll;
+    }  
     &.show{
       display: flex;
     }
@@ -1193,28 +1198,323 @@ margin-bottom: 0;
       position: absolute;
       background: none;
       right:$spacer;
+      border: 0;
+      font-size: 1.5rem;
+      cursor: pointer;
       top:$spacer ;
     }
 }
 
 .popup{
-  width: 600px;
-  max-width: 600px;
+  width: 880px;
+  max-width: 880px;
+  
+  position: relative;
+//  min-height: 344px;
   background-color: #fff;
   iframe{
     width: 100%;
-    height: 100%;
+    height: 40vh;
+    @include max(sm){
+      height: 80vh;
+    }
+    // max-height: 80vh !important;
+    // height: 100%;
   }
 }
+.cart-wrapper{
+  max-width: 880px;
+  padding: $spacer;
+}
 .cart{
-  max-width: 600px;
+ 
+  @include border;
+  background-color: #fff;
+  .list-item{
+    text-align: center;
+    padding: $spacer;
+    .title{
+      @include min(md){
+        display: none;
+      }      
+    }
+    .content{
+
+    }
+
+  }
   .cart__head{
     background-color: $primary;
     color: #fff;
+    @include max(sm){
+      display: none;
+    }   
+  }
+  .cart__row{
+    @include max(sm){
+      padding:$spacer-s $spacer-s 0 $spacer-s;
+    }    
+    + .cart__row{
+      border-top:#ccc 1px solid;
+    }
     .list-item{
-      text-align: center;
-      padding: $spacer;
-
+      @include max(sm){
+      display: flex;
+      padding:0 0 $spacer-s 0;
+      // justify-content: space-between;
+      }
+      .qty{
+        margin: 0 0.4rem;
+      }
+      .title{
+        flex-shrink: 0;
+        flex-basis: 80px;
+        text-align: left;
+        color: $primary;
+        font-weight: bolder;        
+        @include min(sm){
+          display: none;
+        }      
+      }
+      .content{
+        @include max(sm){
+        // color: $primary;
+        }
+      }
+    }
+    
+  
+    .list-item.one-sm-6{
+      text-align: left;
     }
   }
+ 
+}
+.cart-price-wrapper{
+  text-align: right;
+  padding-bottom: $spacer;
+
+}
+.cart-price{
+  display: inline-block;
+  text-align: right;
+  font-size:$h3-font-size;
+  color: $danger;
+  width: 16.666667%;
+  text-align: center;
+  padding-top: $spacer;
+  font-weight: bolder;
+  @include max(sm){
+    width: 100%;
+  }
+}
+
+.computer-btn{
+  width: 25px;
+  // margin:0 0.3rem;
+  cursor: pointer;
+}
+
+.btn-wrapper-center{
+  text-align: center;
+  // padding-top: $spacer;
+}
+
+.product-btn-group{
+
+  text-align: center;
+  padding-top: $spacer;
+  padding-bottom: $spacer ;
+  .btn + .btn{
+    margin-left: $spacer;
+    @include max(md){
+     
+    margin: 0;
+    }
+  }
+  .btn{
+    @include max(md){
+      border-radius: 0;
+      width: 100%;
+    margin: 0;
+    padding:0.8rem 0;
+    }
+
+  }
+  @include max(md){
+    padding: 0;
+position: fixed;
+display: flex;
+bottom: 0;
+left: 0;
+right: 0;
+
+  }
+
+}
+
+.product-content{
+  
+  &__img{
+    margin-bottom: $spacer;
+    margin-top: $spacer;
+  }
+  &__info{
+    // @include border;
+    // background-color: #fff;
+    .product-content-row{
+      line-height: 1.5;
+      display: flex;
+      + .info-row{
+        border-top: #ccc 1px solid;
+      }
+      .title{
+        flex-shrink: 0;
+        // background-color: $info;
+        flex-basis: 100px;
+        padding: $spacer 0;
+        font-weight: bolder;
+        // color: $primary;
+        // border-right: #ccc 1px solid;
+
+      }
+      .content{
+        padding: $spacer 0;
+
+      }
+    }
+  }
+}
+
+.tkt-check{
+  h1{
+
+  }
+  h2{
+
+  }
+}
+.note{
+  line-height: 1.5;
+  margin-bottom: $spacer;
+  &__item{
+    margin-bottom: $spacer-s;
+
+  }
+}
+
+.sign-in{
+  display: none;
+  margin: 2rem auto 0 auto;
+  max-width: 600px;
+  @include border;
+  padding: $spacer;
+  background-color: #fff;
+  label{
+    margin-bottom: $spacer-s;
+    display: inline-block;
+  }
+  h3{
+    color: $primary;
+  }
+  input{
+    height: 35px;
+    width: 100%;
+    padding: 0.3rem;
+    margin-bottom: $spacer;
+
+  }
+  .btn-link{
+    + .btn-link{
+      margin-left: $spacer;
+    }
+
+  }
+  .btn-primary{
+    width: 100%;
+  }
+  .btn-wrapper-center{
+    margin-bottom: $spacer;
+  }
+  &__item{
+    // margin-bottom: $spacer;
+  }
+
+}
+
+.bottom-info{
+  padding-top: 2rem;
+  @include min(md){
+    display: flex;
+    justify-content: center;
+  }
+  &__box{
+    margin-bottom: $spacer;
+    @include min(md){
+    margin:0 $spacer;
+    }
+    h3{
+      color: $primary;
+    }
+    &.for-line{
+      img{
+        margin-bottom: $spacer;
+      }
+      p{
+        margin-bottom: 0;
+
+      }
+      // text-align: center;
+    }
+  }
+  &__list{
+    line-height: 1.5;  
+
+  }
+  &__item{
+    margin-bottom: $spacer-s;
+    
+  }
+
+}
+
+.pay{
+  font-size:$h4-font-size;
+  &__row{
+    display: flex;
+    @include border-bottom;
+    margin-bottom: $spacer;
+
+  }
+  &__title{
+    flex-shrink: 0;
+    padding-right: $spacer;
+    color: $primary;
+    font-weight:bolder;
+
+  }
+  &__content{
+
+
+  }
+  &__more-info{
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: $spacer-s;
+    // margin-bottom: $spacer;
+    font-size: 1rem;
+    padding: 0.3rem;
+    background-color: #eee;
+  }
+  &__item{
+    margin-bottom: $spacer;
+    label{
+
+    }
+    input{
+      margin-right: 0.3rem;
+    }
+
+  }
+
 }

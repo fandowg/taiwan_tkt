@@ -1,4 +1,38 @@
-  //切換menu
+//打開購物車
+
+var popUp = {
+  open: function() {
+      $('.popup-overlay ').addClass('show');
+      $('body').addClass('open');
+      
+  },
+  close: function() {
+    $('.popup-overlay ').removeClass('show');
+      $('body').removeClass('open');
+  }
+}
+
+$(".popup-btn").click(function(e) {
+  e.preventDefault();
+  popUp.open();
+});
+
+$(".popup-close-btn").click(function() {
+
+  popUp.close();
+});
+$('.popup-overlay ').click(function(e) {
+if( !$('.fill-out-form ').is(e.target)){
+  popUp.close();
+}
+})
+//打開登入
+$(".toggle-btn").click(function() {
+  $(".sign-in").slideToggle(200)
+})
+
+
+//切換menu
   for (var i = 0; i < $('.tab-menu ul li ').length; i++) {
     (function(i) {
       $('.tab-menu ul li ').eq(i).find('a').click(function(e) {

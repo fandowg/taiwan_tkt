@@ -14,6 +14,11 @@ body {
   line-height:$line-height-base;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 img {
   max-width: 100%;
   height: auto;
