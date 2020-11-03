@@ -1,3 +1,17 @@
+//選單判斷滾動位置固定
+
+$(window).scroll(function() {
+  var scroll = $(window).scrollTop();
+  var offsetTop = $(".tkt-content").offset().top-100;
+  if(scroll>offsetTop){
+    $('.top-menu').addClass("fix");
+    $('.tkt-content').addClass("for-fix");
+  }else{
+    $('.top-menu').removeClass("fix");
+    $('.tkt-content').removeClass("for-fix");
+  }
+});
+
 //打開購物車
 
 var popUp = {

@@ -202,46 +202,111 @@
             </div>
             <div class="pay__content">
               <div class="pay__item">
-              <input type="radio" name="payWay" id="pay_1"><label for="pay_1"><b>匯款</b> (請於3日內完成匯款，並來電告知後五碼，逾期訂單視同作廢，需重新下訂)</label>
-              <div class="pay__more-info">
-                戶名：良友旅行社股份有限公司，公司帳號：( 808 )玉山銀行城東分行 0048 43500 9002
+                <input class="pay__radio" type="radio" name="payWay" id="pay_1">
+                <div class="pay__item__content">
+                  <label for="pay_1"><b>匯款</b> (請於3日內完成匯款，並來電告知後五碼，逾期訂單視同作廢，需重新下訂)</label>
+                  <div class="pay__more-info">
+                    戶名：良友旅行社股份有限公司，公司帳號：( 808 )玉山銀行城東分行 0048 43500 9002
+                  </div>
+
+                </div>
+
+
               </div>
-              
-            </div>
-           
-            <div class="pay__item">
-              <input type="radio" name="payWay" id="pay_2"><label for="pay_2"><b>信用卡</b> (限使用訂購人信用卡。如刷卡完成，將會收到刷卡確認信。)</label>
-            </div>
+
+              <div class="pay__item">
+                <input class="pay__radio" type="radio" name="payWay" id="pay_2">
+                <div class="pay__item__content">
+                  <label for="pay_2"><b>信用卡</b> (限使用訂購人信用卡。如刷卡完成，將會收到刷卡確認信。)</label>
+                </div>
+              </div>
             </div>
           </div>
           <div class="pay__row">
-            <div class="pay__title">
+            <div class="pay__title ptup">
               取貨方式
             </div>
             <div class="pay__content">
               <div class="pay__item">
-              <input type="radio" name="receiveWay" id="receive_1"><label for="receive_1"><b>至良友旅行社各分公司取件</b></label>
-              <select name="" id="">
-                <option value="">台北總公司 (台北市中山區南京東路二段216號2樓)</option>
-                <option value="">桃園分公司 (桃園市桃園區國強一街162號1樓)</option>
-                <option value="">台中分公司 (台中市西屯區臺灣大道三段282號)</option>
-              
-              </select><br>
-              <div class="pay__more-info">
-              (請攜帶個人身分證明文件)
-              </div>
-            </div>
-           
-            <div class="pay__item">
-              <input type="radio" name="receiveWay" id="receive_2"><label for="receive_2"><b>郵寄，地址：</b> </label>
-              <input type="text" placeholder="請輸入地址"><br>
-              <div class="pay__more-info">
-                (需自付運費30元)
+                <input class="pay__radio" type="radio" name="receiveWay" id="receive_1">
+                <div class="pay__item__content">
+                  <label for="receive_1"><b>至良友旅行社各分公司取件</b></label>
+                  <select class="pay__select" name="" id="">
+                    <option value="">台北總公司 (台北市中山區南京東路二段216號2樓)</option>
+                    <option value="">桃園分公司 (桃園市桃園區國強一街162號1樓)</option>
+                    <option value="">台中分公司 (台中市西屯區臺灣大道三段282號)</option>
+
+                  </select><br>
+                  <div class="pay__more-info">
+                    (請攜帶個人身分證明文件)
+                  </div>
                 </div>
-            </div>
+              </div>
+
+              <div class="pay__item">
+                <input class="pay__radio" type="radio" name="receiveWay" id="receive_2">
+
+                <div class="pay__item__content">
+                  <label for="receive_2"><b>郵寄，地址：</b> </label>
+                  <input class="pay__text" type="text" placeholder="請輸入地址"><br>
+                  <div class="pay__more-info">
+                    (需自付運費30元)
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <h2>訂購人資訊<span>(以下欄位必填)</span></h2>
+        <div class="pay-data form">
+          <div class="form__row one-wrapper">
+            <div class="form__item one-md-6">
+              <label class="form__title " for="">姓名：</label>
+              <input class="form__content " type="text" placeholder="請輸入姓名">
+            </div>
+            <div class="form__item one-md-6">
+              <label class="form__title " for="" class="form__title">性別：</label>
+              <div class="form__box">
+                <div class="radio ">
+                  <input type="radio" class="radio__option" id="male" name="gender"><label for="male">男</label>
+                </div>
+                <div class="radio ">
+                  <input type="radio" class="radio__option" id="female" name="gender"><label for="female">女</label>
+                </div>
+              </div>
+              
+
+            </div>
+            <div class="form__item one-md-6">
+              <label class="form__title " for="">手機號碼：</label>
+              <input class="form__content " type="number" placeholder="請輸入手機號碼">
+            </div>
+            <div class="form__item one-md-6">
+              <label class="form__title " for="">出生日期：</label>
+              <input class="form__content " type="date">
+            </div>
+            <div class="form__item one-md-6">
+              <label class="form__title " for="">身分證字號：</label>
+              <input class="form__content " type="text" placeholder="請輸入身分證字號">
+            </div>
+            <div class="form__item one-md-6">
+              <label class="form__title " for="">E-mail：</label>
+              <input class="form__content " type="email" placeholder="請輸入E-mail">
+            </div>
+            <div class="form__item one-md-12 textarea">
+              <label class="form__title " for="">備註：</label>
+              <textarea name="" id=""  rows="6"></textarea>
+
+            </div>
+          </div>
+          <div class="btn-group">
+            <input type="button" class="btn btn-secondary" value="確認訂購">
+            <input type="submit" class="btn btn-primary" value="重新填寫">
+          </div>
+        </div>
+
+
 
 
 
